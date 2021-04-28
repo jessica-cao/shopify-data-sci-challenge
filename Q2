@@ -1,0 +1,13 @@
+Q2a: 54
+
+SELECT COUNT (*) AS SETotal FROM Orders AS o inner join Shippers AS s where o.ShipperID == s.ShipperID AND s.ShipperName == 'Speedy Express'
+
+Q2b: Peacock
+
+In this question, I make the assumption that "the most orders" refers to the number of orders in the Order table. 
+
+SELECT e.LastName FROM Orders as o INNER JOIN Employees as e where o.EmployeeID == e.EmployeeID GROUP BY e.EmployeeID ORDER BY COUNT(OrderID) DESC LIMIT 1
+
+Q2c: Boston Crab Meat
+
+SELECT p.ProductName FROM Customers as c INNER JOIN Products as p INNER JOIN OrderDetails as ods INNER JOIN Orders as o where c.Country == "Germany" AND o.OrderID == ods.OrderID AND ods.ProductID == p.ProductID AND c.CustomerID == o.CustomerID GROUP BY (p.ProductID) ORDER BY sum(ods.Quantity) DESC LIMIT 1
